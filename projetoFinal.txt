@@ -1,0 +1,13 @@
+1- https://www.bancodesanguevirtual.com.br/Sobre-doar
+(site de modelo)
+
+2- identificar o problema:
+O site tem como principio auxiliar na doação de sangue, 
+para que as pessoas que realmente precisem não aguarde por
+muito tempo, onde pode haver complicações na sua saúde.
+
+3- Nossa solução seria: Criar um site onde possamos ter 
+uma lista com pessoas interessadas em fazer a doação de 
+sangue, e assim aqueles que precisam não teram que aguardar. 
+
+4- desenhar o esboço no figma wireframe: esboço simples figma
