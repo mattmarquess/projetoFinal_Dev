@@ -74,11 +74,17 @@ Abaixo estão as principais classes que compõem o sistema:
 #### Tabela: doadores
 ```sql
 CREATE TABLE doadores (
-  id SERIAL PRIMARY KEY,
-  nome VARCHAR(100) NOT NULL,
-  email VARCHAR(100) UNIQUE NOT NULL,
-  senha VARCHAR(255) NOT NULL,
-  data_nascimento DATE NOT NULL,
-  tipo_sanguineo VARCHAR(5),
-  documento VARCHAR(20) UNIQUE NOT NULL
+  id SERIAL PRIMARY KEY,                             -- Identificador único para cada doador
+  nome VARCHAR(100) NOT NULL,                        -- Nome completo do doador
+  email VARCHAR(100) UNIQUE NOT NULL,                -- E-mail único do doador
+  senha VARCHAR(255) NOT NULL,                       -- Senha criptografada do doador
+  data_nascimento DATE NOT NULL,                     -- Data de nascimento do doador
+  tipo_sanguineo VARCHAR(5) NOT NULL,                -- Tipo sanguíneo do doador
+  documento VARCHAR(20) UNIQUE NOT NULL,             -- Documento de identificação (ex.: RG, CPF, etc.)
+  data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Data de cadastro do doador no sistema
+  CONSTRAINT chk_data_nascimento CHECK (data_nascimento < CURRENT_DATE) -- Verifica se a data de nascimento é anterior à data atual
 );
+
+-- Índice para otimizar consultas por e-mail e documento
+CREATE INDEX idx_email ON doadores (email);
+CREATE INDEX idx_documento ON doadores (documento);
