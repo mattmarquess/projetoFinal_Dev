@@ -1,77 +1,109 @@
-# Documentação do Projeto: Sistema de Doação de Sangue
+# Documento de Definição do Projeto: Sistema de Doação de Sangue
 
-Este projeto tem como objetivo facilitar o processo de doação de sangue, conectando doadores com pontos de coleta e oferecendo recompensas para incentivar a doação regular. O sistema foi desenvolvido utilizando PHP para o backend e PostgreSQL para o banco de dados.
+## 1. Definição do Problema
 
-## 1. Visão Geral do Sistema
+O Brasil enfrenta uma constante necessidade de doações de sangue para atender hospitais e unidades de saúde, especialmente durante períodos de alta demanda como feriados ou crises sanitárias. A dificuldade em encontrar pontos de coleta, a falta de incentivo à doação regular e a desorganização no processo de agendamento e controle de doações são os principais obstáculos para aumentar as doações.
 
-O sistema permite que os usuários cadastrem-se como doadores, agendem doações e acompanhem seu histórico. Os administradores podem gerenciar os doadores, doações e recompensas.
+### Objetivo do Sistema
 
-- **Tecnologias utilizadas**:
-  - **Frontend**: HTML, CSS, JavaScript (opcionalmente frameworks como React ou Vue.js)
-  - **Backend**: PHP
-  - **Banco de Dados**: PostgreSQL
+Este sistema tem como objetivo facilitar a doação de sangue conectando doadores a pontos de coleta e oferecendo recompensas para incentivar a doação regular, além de permitir o acompanhamento de doações realizadas e históricos de pontos acumulados.
 
-## 2. Diagrama de Classes
+---
 
-Abaixo estão as principais classes que compõem o sistema:
+## 2. Descrição da Solução
 
-### Classe: Doador
-- **Atributos**:
-  - `id`: Identificador único (int)
-  - `nome`: Nome completo (string)
-  - `email`: E-mail (string)
-  - `senha`: Senha de acesso (string)
-  - `data_nascimento`: Data de nascimento (date)
-  - `tipo_sanguineo`: Tipo sanguíneo (string)
-  - `documento`: Documento de identificação (string)
-  
-- **Métodos**:
-  - `cadastrarDoador()`
-  - `atualizarDados()`
-  - `verificarElegibilidade()`
+A solução proposta é a criação de um **Sistema de Doação de Sangue Online**. Este sistema contará com as seguintes funcionalidades principais:
 
-### Classe: Doacao
-- **Atributos**:
-  - `id`: Identificador único (int)
-  - `doador_id`: ID do doador (int)
-  - `data_doacao`: Data da doação (date)
-  - `tipo_sanguineo`: Tipo sanguíneo (string)
-  - `local_coleta`: Local da coleta (string)
-  - `status`: Status da doação (string)
+### Funcionalidades
 
-- **Métodos**:
-  - `agendarDoacao()`
-  - `cancelarDoacao()`
-  - `confirmarDoacao()`
+1. **Cadastro de Doadores**: 
+   - O doador pode se registrar fornecendo informações básicas como nome, e-mail, tipo sanguíneo, entre outros dados de identificação.
 
-### Classe: Administrador
-- **Atributos**:
-  - `id`: Identificador único (int)
-  - `nome`: Nome do administrador (string)
-  - `email`: E-mail (string)
-  - `senha`: Senha de acesso (string)
+2. **Agendamento de Doações**: 
+   - O sistema permite que o doador agende doações em pontos de coleta, com a opção de visualizar locais disponíveis e escolher a melhor data.
 
-- **Métodos**:
-  - `validarAcesso()`
-  - `visualizarDoacoes()`
-  - `emitirRecompensa()`
+3. **Histórico de Doações**: 
+   - O doador poderá visualizar todas as doações realizadas, com informações sobre status, tipo sanguíneo e pontos acumulados.
 
-### Classe: Recompensa
-- **Atributos**:
-  - `id`: Identificador único (int)
-  - `nome`: Nome da recompensa (string)
-  - `descricao`: Descrição da recompensa (string)
-  - `pontos_necessarios`: Pontos necessários para resgatar (int)
+4. **Recompensas**: 
+   - A cada doação, o doador acumula pontos que podem ser resgatados por recompensas como benefícios, descontos ou prêmios.
 
-- **Métodos**:
-  - `resgatarRecompensa()`
-  - `atualizarRecompensa()`
+5. **Gestão Administrativa**: 
+   - Administradores têm acesso para gerenciar doadores, doações e recompensas, além de poderem aprovar ou cancelar doações.
 
-## 3. Estrutura do Banco de Dados
+### Tecnologias Utilizadas
+
+- **Frontend**: HTML, CSS, JavaScript, React.js (para interação dinâmica)
+- **Backend**: PHP (framework Laravel para facilitar o desenvolvimento)
+- **Banco de Dados**: PostgreSQL (para armazenamento eficiente de dados)
+- **Frameworks e Bibliotecas**: Bootstrap (para design responsivo)
+
+---
+
+## 3. Requisitos Iniciais
+
+### Requisitos Funcionais
+
+1. **Cadastro de Doadores**:
+   - Campos obrigatórios: nome, e-mail, tipo sanguíneo, data de nascimento, documento de identificação.
+   - O sistema deve garantir que o e-mail e o documento de identificação sejam únicos.
+
+2. **Agendamento de Doações**:
+   - O sistema deve permitir agendar a doação, com data e local escolhidos.
+   - O sistema verifica a elegibilidade do doador com base no tipo sanguíneo e no tempo desde a última doação.
+
+3. **Histórico de Doações**:
+   - O doador pode visualizar suas doações anteriores, incluindo o status (confirmada, pendente, cancelada), local e pontos acumulados.
+
+4. **Sistema de Recompensas**:
+   - O sistema deve permitir a visualização das recompensas disponíveis e permitir o resgate de prêmios com base nos pontos acumulados.
+
+5. **Gestão Administrativa**:
+   - Administradores poderão visualizar todos os registros de doadores e doações, emitir recompensas e gerenciar pontos de coleta.
+
+### Requisitos Não Funcionais
+
+1. **Segurança**:
+   - O sistema deve garantir que as senhas dos usuários sejam armazenadas de forma segura (utilizando hash).
+   - Garantir autenticação robusta e controles de acesso para administradores e doadores.
+
+2. **Desempenho**:
+   - O sistema deve ser capaz de suportar consultas rápidas em tabelas com grande volume de dados.
+
+3. **Usabilidade**:
+   - A interface do sistema deve ser simples, intuitiva e acessível para diferentes perfis de usuários (doadores e administradores).
+
+4. **Escalabilidade**:
+   - O sistema deve permitir a inclusão futura de novos pontos de coleta, mais tipos de recompensas e integração com novos sistemas.
+
+---
+
+## 4. Wireframe da Interface Principal
+
+A interface do sistema será dividida nas seguintes seções:
+
+1. **Cabeçalho**:
+   - Logo do sistema.
+   - Menu de navegação: Home, Agendar Doação, Histórico, Recompensas, Perfil, Logout.
+
+2. **Corpo da Página**:
+   - **Área de Agendamento**: Espaço onde o doador escolhe data e ponto de coleta.
+   - **Localização dos Pontos de Coleta**: Um mapa interativo ou lista de locais.
+   - **Histórico de Doações**: Tabela com detalhes das doações passadas e pontos acumulados.
+
+3. **Rodapé**:
+   - Links institucionais: Sobre, Contato, Política de Privacidade.
+
+![Wireframe](https://github.com/user-attachments/assets/3c6b886f-ff84-4b15-beef-82463a35b844)
+
+---
+
+## 5. Estrutura do Banco de Dados
 
 ### Tabelas Principais
 
-#### Tabela: doadores
+#### 1. Tabela `doadores`
+
 ```sql
 CREATE TABLE doadores (
   id SERIAL PRIMARY KEY,                             -- Identificador único para cada doador
@@ -80,15 +112,11 @@ CREATE TABLE doadores (
   senha VARCHAR(255) NOT NULL,                       -- Senha criptografada do doador
   data_nascimento DATE NOT NULL,                     -- Data de nascimento do doador
   tipo_sanguineo VARCHAR(5) NOT NULL,                -- Tipo sanguíneo do doador
-  documento VARCHAR(20) UNIQUE NOT NULL,             -- Documento de identificação (ex.: RG, CPF, etc.)
-  data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Data de cadastro do doador no sistema
-  CONSTRAINT chk_data_nascimento CHECK (data_nascimento < CURRENT_DATE) -- Verifica se a data de nascimento é anterior à data atual
+  documento VARCHAR(20) UNIQUE NOT NULL,             -- Documento de identificação
+  data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Data de cadastro no sistema
+  CONSTRAINT chk_data_nascimento CHECK (data_nascimento < CURRENT_DATE) -- Validação de data de nascimento
 );
 
--- Índice para otimizar consultas por e-mail e documento
+-- Índices para otimizar consultas por e-mail e documento
 CREATE INDEX idx_email ON doadores (email);
 CREATE INDEX idx_documento ON doadores (documento);
-
-#Figma
-![image](https://github.com/user-attachments/assets/3c6b886f-ff84-4b15-beef-82463a35b844)
-
