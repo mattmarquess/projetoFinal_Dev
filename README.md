@@ -94,7 +94,7 @@ A interface do sistema será dividida nas seguintes seções:
 3. **Rodapé**:
    - Links institucionais: Sobre, Contato, Política de Privacidade.
 
-![Wireframe](https://github.com/user-attachments/assets/3c6b886f-ff84-4b15-beef-82463a35b844)
+[![Wireframe](https://github.com/user-attachments/assets/3c6b886f-ff84-4b15-beef-82463a35b844)](https://www.figma.com/design/EJ2FPEwzQk69AHGjH0sUWk/Untitled?node-id=0-1&m=dev&t=1JbG7iEu97A1CuYB-1)
 
 ---
 
